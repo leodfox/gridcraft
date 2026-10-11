@@ -504,7 +504,7 @@ impl Dialog {
             "commandSearch" => Dialog::custom("commandSearch", "Search Commands", json!({})),
             "agents" => Dialog::custom("agents", "Agent Control", json!({})),
             "about" => {
-                let mut d = Dialog::custom("about", "About GridCraft", json!({}));
+                let mut d = Dialog::custom("about", "About Ardoise Calcul", json!({}));
                 d.tab = match p("tab").as_str() {
                     Some(t @ ("Contributors" | "Models")) => t.to_string(),
                     _ => "About".into(),
@@ -552,7 +552,7 @@ impl Dialog {
             "pickList" => Dialog::custom("pickList", "Pick From List", json!({})),
             "saveCopy" => Dialog::custom("saveCopy", "Save a Copy", json!({"format": p("format")})),
             "saveChanges" => Dialog::custom("saveChanges", "Save Changes?", json!({"title": p("title")})),
-            "start" => Dialog::custom("start", "GridCraft", json!({})),
+            "start" => Dialog::custom("start", "Ardoise Calcul", json!({})),
             "comments" => {
                 app.grid.pane = Some("comments".into());
                 return None;
@@ -662,7 +662,7 @@ pub fn show(app: &mut SheetApp, ctx: &egui::Context) {
                 "goalSeek" => goal_seek(app, ui, &mut d, &mut confirm),
                 "spelling" => spelling(app, ui, &mut d, &mut open),
                 "agents" => {
-                    ui.label("GridCraft is fully drivable by agents. Every menu item, button and gesture is a command:");
+                    ui.label("Ardoise Calcul is fully drivable by agents. Every menu item, button and gesture is a command:");
                     ui.add_space(4.0);
                     ui.monospace("gridcraft --control 7979        # JSON-lines control channel\ngridcraft-cli mcp --connect 7979   # MCP bridged to this window\ngridcraft-cli mcp                   # headless MCP server");
                     ui.add_space(4.0);
@@ -900,7 +900,7 @@ fn form(ui: &mut egui::Ui, d: &mut Dialog, confirm: &mut bool, open: &mut bool) 
     ok_cancel(ui, confirm, open);
 }
 
-/// Help ▸ About GridCraft: the app, its contributors and the AI models that helped. The credits
+/// Help ▸ About Ardoise Calcul: the app, its contributors and the AI models that helped. The credits
 /// are compiled in (`crate::credits`, docs/contributors.md).
 fn about(ui: &mut egui::Ui, d: &mut Dialog) {
     ui.horizontal(|ui| {
@@ -915,7 +915,7 @@ fn about(ui: &mut egui::Ui, d: &mut Dialog) {
         "Contributors" => crate::credits::contributors_ui(ui),
         "Models" => crate::credits::models_ui(ui),
         _ => {
-            ui.heading("Ardoise — Classeur");
+            ui.heading("Ardoise Calcul");
             ui.label(format!("Version {}", env!("CARGO_PKG_VERSION")));
             ui.add_space(4.0);
             ui.label("Tableur Ardoise — basé sur GridCraft (Apache-2.0).");

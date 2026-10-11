@@ -1318,7 +1318,7 @@ fn interact(app: &mut SheetApp, ui: &mut egui::Ui, resp: &egui::Response, geo: &
                 if t != src {
                     let mode = if mods.command { "copy" } else { "series" };
                     if let Err(e) = app.run("edit.autoFill", json!({"source": src.a1(), "target": t.a1(), "mode": mode})) {
-                        app.message = Some(("GridCraft".into(), crate::clean_error(&e)));
+                        app.message = Some(("Ardoise Calcul".into(), crate::clean_error(&e)));
                     }
                 }
             }
